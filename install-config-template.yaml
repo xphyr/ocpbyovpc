@@ -1,0 +1,59 @@
+apiVersion: v1
+baseDomain: demo.net 
+controlPlane: 
+  hyperthreading: Enabled   
+  name: master
+  platform:
+    aws:
+      zones:
+      - us-east-2a
+      - us-east-2b
+      - us-east-2c
+      rootVolume:
+        iops: 4000
+        size: 500
+        type: io1
+      type: m5.xlarge 
+  replicas: 3
+compute: 
+- hyperthreading: Enabled 
+  name: worker
+  platform:
+    aws:
+      rootVolume:
+        iops: 2000
+        size: 500
+        type: io1 
+      type: c5.4xlarge
+      zones:
+      - us-east-2a
+      - us-east-2b
+      - us-east-2c
+  replicas: 3
+metadata:
+  name: testcluster 
+networking:
+  clusterNetwork:
+  - cidr: 10.128.0.0/14
+    hostPrefix: 23
+  machineNetwork:
+  - cidr: 10.0.0.0/16
+  networkType: OpenShiftSDN
+  serviceNetwork:
+  - 172.30.0.0/16
+platform:
+  aws:
+    region: us-east-2 
+    userTags:
+      adminContact: jsmith
+      costCenter: 7536
+    subnets: 
+    - subnet-0fba30a018528e31d # us-east-2a-private
+    - subnet-06db840ed48a53357 # us-east-2b-private
+    - subnet-0e4970787c4158ac9 # us-east-2c-private
+    - subnet-0d9f496b3fed4a3ed # us-east-2a-public
+    - subnet-0af54dbcd65a8febd # us-east-2b-public
+    - subnet-04756f2eccb69ef28 # us-east-2c-public
+pullSecret: '{"auths": ...}' 
+fips: false 
+sshKey: ssh-ed25519 AAAA... 
