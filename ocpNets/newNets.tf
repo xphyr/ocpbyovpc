@@ -110,7 +110,7 @@ resource "aws_eip" "natgw_a_eip" {
 
 resource "aws_nat_gateway" "natgw_a" {
   allocation_id = aws_eip.natgw_a_eip.id
-  subnet_id     = aws_subnet.us-east-2a-private.id
+  subnet_id     = aws_subnet.us-east-2a-public.id
 
   tags = {
     Name = "gw NAT zone a"
@@ -134,7 +134,7 @@ resource "aws_eip" "natgw_b_eip" {
 
 resource "aws_nat_gateway" "natgw_b" {
   allocation_id = aws_eip.natgw_b_eip.id
-  subnet_id     = aws_subnet.us-east-2b-private.id
+  subnet_id     = aws_subnet.us-east-2b-public.id
 
   tags = {
     Name = "gw NAT zone b"
@@ -158,7 +158,7 @@ resource "aws_eip" "natgw_c_eip" {
 
 resource "aws_nat_gateway" "natgw_c" {
   allocation_id = aws_eip.natgw_c_eip.id
-  subnet_id     = aws_subnet.us-east-2c-private.id
+  subnet_id     = aws_subnet.us-east-2c-public.id
 
   tags = {
     Name = "gw NAT zone c"
