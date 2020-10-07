@@ -3,7 +3,7 @@ resource "aws_vpc" "default" {
     enable_dns_hostnames = true
     enable_dns_support = true
     tags = {
-        Name = "terraform-aws-vpc"
+        Name = "corporate-aws-vpc"
     }
 }
 
@@ -105,7 +105,7 @@ resource "aws_subnet" "us-east-2a-public" {
     availability_zone = "us-east-2a"
 
     tags = {
-        Name = "Public Subnet"
+        Name = "Corporate Public Subnet"
     }
 }
 
@@ -118,7 +118,7 @@ resource "aws_route_table" "us-east-2a-public" {
     }
 
     tags = {
-        Name = "Public Subnet"
+        Name = "Corporate Public Subnet"
     }
 }
 
@@ -137,7 +137,7 @@ resource "aws_subnet" "us-east-2a-private" {
     availability_zone = "us-east-2a"
 
     tags = {
-        Name = "Private Subnet"
+        Name = "Corporate Private Subnet"
     }
 }
 
@@ -150,7 +150,7 @@ resource "aws_route_table" "us-east-2a-private" {
     }
 
     tags = {
-        Name = "Private Subnet"
+        Name = "Corporate Private Subnet"
     }
 }
 
